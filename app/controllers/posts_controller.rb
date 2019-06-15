@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   end
   
   def show
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -16,9 +17,7 @@ class PostsController < ApplicationController
     
     # DBへ保存する
     post.save
-    
-    # トップ画面へリダイレクト
-    redirect_to '/top'
+    redirect_to post_path(post.id)
   end
   
   private
